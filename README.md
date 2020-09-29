@@ -10,6 +10,20 @@ Read Eval Print Loop *and Read*!! UI to help you read your codebase!
 - If you click in any function in the *first* pane, the *third* will show the functions that is using you (references)
 - If you click in any function in the *second* pane, the *third* will show the functions that is using you (references)
 
+## Instalation
+
+Not in clojars yet... under development.
+
+However, there is already a nrepl middleware implemented that need to
+be used if you desired to have instant feedback when a new function is
+created or changed inside the project.
+
+Add the following lines to your `project.clj`.
+
+``` clojure
+:repl-options {:nrepl-middleware [montag.middleware.nrepl/wrap-montag]}
+```
+
 ## Motivation
 
 I read an interesting essay entitled [Design Patterns, Smalltalk, and the Lost Art of Reading Code](https://medium.com/@kylegenebrown/design-patterns-smalltalk-and-the-lost-art-of-reading-code-1727d93fd7fa) and I liked the idea of _reading your source code_ as a main source of building block to keep moving forward with your application.
