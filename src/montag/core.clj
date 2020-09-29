@@ -3,6 +3,7 @@
             [clojure.string :as cstr]
             [montag.render :as render]
             [montag.find :as mfind]
+            [montag.utils.macro :as macro]
             [orchard.meta :as m]
             [orchard.namespace :as nas]
             [orchard.query :as query]
@@ -24,17 +25,6 @@
     (swap! *state assoc :filter-fns (filter #(.startsWith % nms) (keys (:all-fns @*state))))))
 
 ;; (m/var-code (last (query/vars {:private? true})))
-
-(defmacro if-lety
-  ([bindings then]
-   `(if-lety ~bindings ~then nil))
-  ([bindings then else & _]
-   (let [form (bindings 0) tst (bindings 1)]
-     `(let [temp# ~tst]
-        (if (and temp# (not-empty temp#))
-          (let [~form temp#]
-            ~then)
-          ~else)))))
 
 (defn root [arg]
   {:fx/type :stage
@@ -62,7 +52,7 @@
                                                                        (swap! *state assoc :fn-inside (mfind/find-fn-dependencies vr))
                                                                        (swap! *state assoc :fn-references (mfind/find-fn-references %))
                                                                        (swap! *state assoc :fn-clicked %))
-                                          :items (if-lety [filtered-fns (:filter-fns @*state)]
+                                          :items (macro/if-lety [filtered-fns (:filter-fns @*state)]
                                                    filtered-fns
                                                    (do
                                                      (swap! *state assoc :filter-fns (sort (keys (:all-fns @*state))))
