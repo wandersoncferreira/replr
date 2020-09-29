@@ -1,5 +1,7 @@
 # REPLR
 
+[![Clojars Project](https://img.shields.io/clojars/v/replr.svg)](https://clojars.org/replr)
+
 *Read* Eval Print Loop **and Read**!! UI to help you read your codebase!
 
 ![](resources/replr.png)
@@ -12,11 +14,13 @@
 
 ## Instalation
 
-Not in clojars yet... under development.
+``` clojure
+[replr "0.1.0"]
+```
 
-However, there is already a nrepl middleware implemented that need to
-be used if you desired to have instant feedback when a new function is
-created or changed inside the project.
+There is already a nrepl middleware implemented that need to be used
+if you desired to have instant feedback when a new function is created
+or changed inside the project.
 
 Add the following lines to your `project.clj`.
 
