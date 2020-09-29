@@ -6,5 +6,5 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [cljfx "1.7.10"]
                  [cider/orchard "0.6.0"]]
-  :repl-options {:init-ns montag.core
-                 #_:nrepl-middleware #_[montag.middleware.nrepl/wrap-montag]})
+  :repl-options {:init-ns montag.ui
+                 :nrepl-middleware [montag.middleware.nrepl/wrap-montag]})
