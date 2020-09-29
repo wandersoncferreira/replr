@@ -1,14 +1,34 @@
-# montag
+# REPLR
 
-A Clojure library designed to ... well, that part is up to you.
+Read Eval Print Loop *and Read*!! UI to help you read your codebase!
 
-## Usage
+![](resources/replr.png)
+*Initial layout of REPLR.*
 
-FIXME
+- First pane will list all the symbols available on your load-class.
+- If you click in any function in the *first* pane, the *second* will show its function dependencies
+- If you click in any function in the *first* pane, the *third* will show the functions that is using you (references)
+- If you click in any function in the *second* pane, the *third* will show the functions that is using you (references)
+
+## Motivation
+
+I read an interesting essay entitled [Design Patterns, Smalltalk, and the Lost Art of Reading Code](https://medium.com/@kylegenebrown/design-patterns-smalltalk-and-the-lost-art-of-reading-code-1727d93fd7fa) and I liked the idea of _reading your source code_ as a main source of building block to keep moving forward with your application.
+
+This project has no pretension (yet! (: ) to provide the same
+flexibility as is described about the Smalltalk entire
+environment. However, I am often caught by surprise about the amount
+of code I depend on because I wanted to use that single nice function
+that helps me accomplish the task of the day.
+
+![](resources/smalltalk.png)
+*Squeak Smalltak showing 4-pane browser and workspace. From essay.*
+
+The idea is to provide some visibility about the entire load class
+available for you to use in your clojure project.
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright 2020 Wanderson Ferreira
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
