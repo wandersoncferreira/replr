@@ -1,6 +1,6 @@
 (ns montag.find
-  (:require [orchard.query :as query]
-            [orchard.meta :as m]
+  (:require [orchard.meta :as m]
+            [orchard.query :as query]
             [orchard.xref :as xref]))
 
 (def uninteresting-namespaces
@@ -8,30 +8,37 @@
    "nrepl"
    "refactor-nrepl"])
 
+(def var->name (fn [v] (let [m (meta v)] (str (:ns m) "/" (:name m)))))
+
+(defn find-all-vars-current-project []
+  (let [nss (query/namespaces {:load-project-ns? true
+                               :project? true})]
+    (->> nss
+         (map str)
+         (map re-pattern)
+         (map #(query/vars {:search %}))
+         flatten
+         (map #(hash-map (var->name %) %))
+         (into {}))))
+
 (defn find-all-vars []
   (let [all-vars (query/vars {:private? true})]
     (->> all-vars
-         (pmap #(hash-map (str (:ns (meta %)) "/" (:name (meta %))) %))
+         (map #(hash-map (var->name %) %))
          (remove #(some true? (map (fn [v]
                                      (.startsWith (first (keys %)) v)) uninteresting-namespaces)))
          (into {}))))
 
 (defn find-fn-dependencies [vr]
-  (let [fmt (fn [vr]
-              (let [mt (meta vr)]
-                (str (:ns mt) "/" (:name mt))))]
-    (->> vr
-         xref/fn-deps
-         (map fmt))))
+  (->> vr
+       xref/fn-deps
+       (map var->name)))
 
 (defn find-fn-references [name]
-  (let [sym (symbol name)
-        fmt (fn [vr]
-              (let [mt (meta vr)]
-                (str (:ns mt) "/" (:name mt))))]
+  (let [sym (symbol name)]
     (->> sym
          xref/fn-refs
-         (map fmt))))
+         (map var->name))))
 
 (defn find-source-code [var]
   (try
