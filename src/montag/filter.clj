@@ -1,7 +1,6 @@
 (ns montag.filter
   (:require [clojure.string :as cstr]))
 
-(defn filter-namespace [state name]
+(defn filter-namespace [name all-fns]
   (let [[nms _] (cstr/split name #"/")]
-    (assoc state :filter-fns (filter #(.startsWith % nms)
-                                     (keys (:all-fns state))))))
+    (filter #(.startsWith % nms) (keys all-fns))))
