@@ -15,7 +15,7 @@
 ## Instalation
 
 ``` clojure
-[replr "0.1.0"]
+[replr "0.1.1"]
 ```
 
 There is already a nrepl middleware implemented that need to be used

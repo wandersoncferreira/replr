@@ -3,7 +3,8 @@
             [replr.core :as -core]
             [replr.events :as -events]
             [replr.state :as -state]
-            [replr.utils.views :as -views]))
+            [replr.utils.views :as -views])
+  (:gen-class))
 
 (defn root [_]
   {:fx/type :stage
@@ -49,3 +50,6 @@
    (fx/create-renderer
     :middleware (fx/wrap-map-desc assoc :fx/type root)
     :opts {:fx.opt/map-event-handler -events/handler})))
+
+(defn -main [& args]
+  (open))
