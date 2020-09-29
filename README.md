@@ -26,6 +26,13 @@ that helps me accomplish the task of the day.
 The idea is to provide some visibility about the entire load class
 available for you to use in your clojure project.
 
+
+#### TODO
+
+The free area in the right side is waiting for more
+functionalities. Up to now, I thought about the display of a
+dependency graph for the selected functions.
+
 ## License
 
 Copyright 2020 Wanderson Ferreira
