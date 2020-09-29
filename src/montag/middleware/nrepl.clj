@@ -1,17 +1,18 @@
 (ns montag.middleware.nrepl
-  (:require [nrepl.transport :as transport]
-            [nrepl.middleware.print :refer [wrap-print]]
+  (:require [montag.state :as -state]
             [nrepl.middleware :refer [set-descriptor!]]
-            [montag.state :as state])
-  (:import [nrepl.transport Transport]))
+            [nrepl.middleware.print :refer [wrap-print]]
+            [nrepl.transport :as transport])
+  (:import nrepl.transport.Transport))
 
 (defn send-to-montag!
   [{:keys [code]} {:keys [value] :as resp}]
   (when (and code (contains? resp :value) (var? value))
-    (state/update-vars! value)))
+    (-state/update-vars! value))
+  resp)
 
 (defn- wrap-montag-sender
-  [{:keys [^Transport transport] :as request}]
+  [{:keys [id op ^Transport transport] :as request}]
   (reify transport/Transport
     (recv [this]
       (.recv transport))
@@ -22,7 +23,7 @@
       this)))
 
 (defn wrap-montag [handler]
-  (fn [request]
+  (fn [{:keys [id op transport] :as request}]
     (handler (assoc request :transport (wrap-montag-sender request)))))
 
 (set-descriptor! #'wrap-montag
