@@ -39,6 +39,7 @@ of code I depend on because I wanted to use that single nice function
 that helps me accomplish the task of the day.
 
 ![](resources/smalltalk.png)
+
 *Squeak Smalltak showing 4-pane browser and workspace. From essay.*
 
 The idea is to provide some visibility about the entire load class
