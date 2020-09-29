@@ -1,7 +1,7 @@
-(ns montag.events
-  (:require [montag.filter :as -filter]
-            [montag.find :as -find]
-            [montag.state :as -state]))
+(ns replr.events
+  (:require [replr.filter :as -filter]
+            [replr.find :as -find]
+            [replr.state :as -state]))
 
 (defmulti handler (fn [event] (:event/type event)))
 

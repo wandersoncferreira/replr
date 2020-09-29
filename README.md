@@ -21,7 +21,7 @@ created or changed inside the project.
 Add the following lines to your `project.clj`.
 
 ``` clojure
-:repl-options {:nrepl-middleware [montag.middleware.nrepl/wrap-montag]}
+:repl-options {:nrepl-middleware [replr.middleware.nrepl/wrap-replr]}
 ```
 
 ## Motivation

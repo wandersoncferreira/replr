@@ -1,4 +1,4 @@
-(ns montag.filter
+(ns replr.filter
   (:require [clojure.string :as cstr]))
 
 (defn filter-namespace [name all-fns]

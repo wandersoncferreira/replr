@@ -1,6 +1,6 @@
-(ns montag.core-test
+(ns replr.core-test
   (:require [clojure.test :refer :all]
-            [montag.core :refer :all]))
+            [replr.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

@@ -1,4 +1,4 @@
-(ns montag.utils.views)
+(ns replr.utils.views)
 
 (def ^:dynamic *list-view-min-width* 300)
 

@@ -1,8 +1,8 @@
-(ns montag.core
-  (:require [montag.find :as mfind]
-            [montag.render :as render]
-            [montag.state :as -state]
-            [montag.utils.macro :as macro]))
+(ns replr.core
+  (:require [replr.find :as mfind]
+            [replr.render :as render]
+            [replr.state :as -state]
+            [replr.utils.macro :as macro]))
 
 (defmulti list-view-on-item-change (fn [panel] panel))
 

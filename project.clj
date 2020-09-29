@@ -1,4 +1,4 @@
-(defproject montag "0.1.0-SNAPSHOT"
+(defproject replr "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
@@ -6,5 +6,5 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [cljfx "1.7.10"]
                  [cider/orchard "0.6.0"]]
-  :repl-options {:init-ns montag.ui
-                 :nrepl-middleware [montag.middleware.nrepl/wrap-montag]})
+  :repl-options {:init-ns replr.ui
+                 :nrepl-middleware [replr.middleware.nrepl/wrap-replr]})

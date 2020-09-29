@@ -1,5 +1,5 @@
-(ns montag.state
-  (:require [montag.find :as -find]))
+(ns replr.state
+  (:require [replr.find :as -find]))
 
 (defonce ^:private all-vars (-find/find-all-vars))
 

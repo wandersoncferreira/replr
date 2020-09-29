@@ -1,14 +1,14 @@
-(ns montag.ui
+(ns replr.ui
   (:require [cljfx.api :as fx]
-            [montag.core :as -core]
-            [montag.events :as -events]
-            [montag.state :as -state]
-            [montag.utils.views :as -views]))
+            [replr.core :as -core]
+            [replr.events :as -events]
+            [replr.state :as -state]
+            [replr.utils.views :as -views]))
 
 (defn root [_]
   {:fx/type :stage
    :showing true
-   :title "Montag"
+   :title "Replr"
    :scene {:fx/type :scene
            :root {:fx/type :v-box
                   :children [{:fx/type :h-box
