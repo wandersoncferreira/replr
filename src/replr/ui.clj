@@ -8,7 +8,7 @@
 (defn root [_]
   {:fx/type :stage
    :showing true
-   :title "Replr"
+   :title "Replr: Read Eval Print Loop, and READ"
    :scene {:fx/type :scene
            :root {:fx/type :v-box
                   :children [{:fx/type :h-box
