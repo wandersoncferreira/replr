@@ -4,7 +4,7 @@
 
 *Read* Eval Print Loop **and Read**!! UI to help you read your codebase!
 
-![](resources/replr.png)
+![](resources/replr_page.png)
 *Initial layout of REPLR.*
 
 - First pane will list all the symbols available on your load-class.
