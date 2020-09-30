@@ -8,7 +8,7 @@
 *Initial layout of REPLR.*
 
 - First pane will list all the symbols available on your load-class.
-- If you click in any function in the **first** pane, the **second** will show its function dependencies
+- If you click in any function in the **first** pane, the **second** will show its dependencies
 - If you click in any function in the **first** pane, the **third** will show the functions that is using you (references)
 - If you click in any function in the **second** pane, the **third** will show the functions that is using you (references)
 
