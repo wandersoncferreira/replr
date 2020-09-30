@@ -28,6 +28,21 @@ Add the following lines to your `project.clj`.
 :repl-options {:nrepl-middleware [replr.middleware.nrepl/wrap-replr]}
 ```
 
+In order to use it, after your REPL is open:
+```clojure
+(require '[replr.ui :as ui])
+
+(ui/open)
+```
+
+
+## Caveats
+
+- It only works with Java JDK 11
+- You cannot use it from inside a Docker container.
+
+The two main caveats will be addresses in future.
+
 ## Motivation
 
 I read an interesting essay entitled [Design Patterns, Smalltalk, and the Lost Art of Reading Code](https://medium.com/@kylegenebrown/design-patterns-smalltalk-and-the-lost-art-of-reading-code-1727d93fd7fa) and I liked the idea of _reading your source code_ as a main source of building block to keep moving forward with your application.
