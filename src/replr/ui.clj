@@ -80,4 +80,3 @@
 
 (defn -main [& args]
   (open))
-(open)
