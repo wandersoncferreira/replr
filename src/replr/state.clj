@@ -3,11 +3,15 @@
 
 (defonce ^:private all-vars (-find/find-all-vars))
 
-(def db (atom {:fn-inside []
-               :fn-references []
-               :fn-clicked nil
-               :all-fns all-vars
-               :filter-fns []}))
+(defonce ^:private all-ns (-find/find-all-namespaces))
+
+(def db (atom {:source-code "Read more source code!"
+               :all-loaded-vars all-vars
+               :all-loaded-ns all-ns
+               :selected-fn-dependencies (list)
+               :selected-fn-references (list)
+               :selection ""
+               }))
 
 (defn update-vars! [var]
   (let [name (str (:ns (meta var)) "/" (:name (meta var)))]
