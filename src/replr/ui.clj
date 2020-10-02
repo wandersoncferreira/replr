@@ -8,7 +8,8 @@
                     all-loaded-ns
                     selected-fn-dependencies
                     selected-fn-references
-                    source-code]}]
+                    source-code
+                    selection]}]
   {:fx/type :stage
    :showing true
    :title "Replr: Read Eval Print Loop, and READ"
@@ -18,24 +19,35 @@
                               :spacing 250
                               :padding 5
                               :alignment :center-left
-                              :children [{:fx/type :text :text (format "Namespaces - %s" (count all-loaded-ns))}
-                                         {:fx/type :text :text (format "All Symbols - %s" (count all-loaded-vars))}
-                                         {:fx/type :text :text (format "Dependencies - %s" (count selected-fn-dependencies))}
-                                         {:fx/type :text :text (format "References - %s" (count selected-fn-references))}]}
+                              :children [{:fx/type :text :text (format "Namespaces | %s" (count all-loaded-ns))}
+                                         {:fx/type :text :text (format "All Symbols | %s" (count all-loaded-vars))}
+                                         {:fx/type :text :text (format "Dependencies | %s" (count selected-fn-dependencies))}
+                                         {:fx/type :text :text (format "References | %s" (count selected-fn-references))}]}
                              {:fx/type :h-box
                               :padding 5
                               :spacing 20
                               :children [{:fx/type -views/list-view
                                           :items (sort all-loaded-ns)
+                                          :selection-mode :multiple
+                                          :selection selection
                                           :panel :all-loaded-ns}
+
                                          {:fx/type -views/list-view
                                           :items (sort (keys all-loaded-vars))
+                                          :selection-mode :multiple
+                                          :selection selection
                                           :panel :all-loaded-vars}
+
                                          {:fx/type -views/list-view
-                                          :items selected-fn-dependencies
+                                          :items (sort (keys selected-fn-dependencies))
+                                          :selection-mode :multiple
+                                          :selection selection
                                           :panel :selected-fn-dependencies}
+                                         
                                          {:fx/type -views/list-view
-                                          :items selected-fn-references
+                                          :items (sort (keys selected-fn-references))
+                                          :selection-mode :multiple
+                                          :selection selection
                                           :panel :selected-fn-references}
                                          ]}
                              {:fx/type :h-box
@@ -67,3 +79,4 @@
 
 (defn -main [& args]
   (open))
+(open)
