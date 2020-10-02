@@ -25,6 +25,7 @@
                                          {:fx/type :text :text (format "References | %s" (count selected-fn-references))}]}
                              {:fx/type :h-box
                               :padding 5
+                              :fill-height false
                               :spacing 20
                               :children [{:fx/type -views/list-view
                                           :items (sort all-loaded-ns)
