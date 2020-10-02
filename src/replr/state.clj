@@ -3,9 +3,12 @@
 
 (defonce ^:private all-vars (-find/find-all-vars))
 
+(defonce ^:private all-ns (-find/find-all-namespaces))
+
 (def db (atom {:fn-inside []
                :fn-references []
                :fn-clicked nil
+               :all-ns all-ns
                :all-fns all-vars
                :filter-fns []}))
 

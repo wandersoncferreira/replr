@@ -15,14 +15,16 @@
                               :spacing 250
                               :padding 5
                               :alignment :center-left
-                              :children [{:fx/type :text :text "All Symbols"}
+                              :children [{:fx/type :text :text "Namespaces"}
+                                         {:fx/type :text :text "All Symbols"}
                                          {:fx/type :text :text "Dependencies"}
                                          {:fx/type :text :text "References"}]}
                              {:fx/type :h-box
                               :padding 5
                               :fill-height false
                               :spacing 20
-                              :children [(-views/list-view (-core/list-view-on-item-change :all-fns) (-core/items :all-fns))
+                              :children [(-views/list-view (-core/list-view-on-item-change :namespaces) (-core/items :namespaces))
+                                         (-views/list-view (-core/list-view-on-item-change :all-fns) (-core/items :all-fns))
                                          (-views/list-view (-core/list-view-on-item-change :dependencies) (-core/items :dependencies))
                                          (-views/list-view (-core/list-view-on-item-change :references) (-core/items :references))]}
                              {:fx/type :h-box

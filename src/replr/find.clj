@@ -1,6 +1,7 @@
 (ns replr.find
   (:require [orchard.meta :as m]
             [orchard.query :as query]
+            [orchard.namespace :as nas]
             [orchard.xref :as xref]))
 
 (def uninteresting-namespaces
@@ -20,6 +21,12 @@
          flatten
          (map #(hash-map (var->name %) %))
          (into {}))))
+
+(defn find-all-namespaces []
+  (sort (map str(nas/loaded-namespaces))))
+
+(defn find-project-namespaces []
+  (sort (map str (nas/project-namespaces))))
 
 (defn find-all-vars []
   (let [all-vars (query/vars {:private? true})]

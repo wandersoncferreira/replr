@@ -7,14 +7,16 @@
 
 (defmethod handler :filter/remove-all-ns
   [_]
-  (swap! -state/db assoc :filter-fns (sort (keys (:all-fns @-state/db)))))
+  (swap! -state/db assoc :filter-fns (sort (keys (:all-fns @-state/db))))
+  (swap! -state/db assoc :all-ns (-find/find-all-namespaces)))
 
 (defmethod handler :filter/project-ns
   [_]
   (let [vars (-find/find-all-vars-current-project)
         alls (:all-fns @-state/db)]
     (swap! -state/db assoc :filter-fns (keys vars))
-    (swap! -state/db assoc :all-fns (merge vars alls))))
+    (swap! -state/db assoc :all-fns (merge vars alls))
+    (swap! -state/db assoc :all-ns (-find/find-project-namespaces))))
 
 (defmethod handler :filter/current-ns
   [_]
