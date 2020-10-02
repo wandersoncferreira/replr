@@ -4,7 +4,7 @@
 
 *Read* Eval Print Loop **and Read**!! UI to help you read your codebase!
 
-![](resources/replr_page.png)
+![](resources/replr_v2.png)
 *Initial layout of REPLR.*
 
 - First pane will list all the symbols available on your load-class.
@@ -15,7 +15,7 @@
 ## Instalation
 
 ``` clojure
-[replr "0.1.4"]
+[replr "0.1.5"]
 ```
 
 There is already a nrepl middleware implemented that need to be used
@@ -47,11 +47,11 @@ The two main caveats will be addresses in future.
 
 I read an interesting essay entitled [Design Patterns, Smalltalk, and the Lost Art of Reading Code](https://medium.com/@kylegenebrown/design-patterns-smalltalk-and-the-lost-art-of-reading-code-1727d93fd7fa) and I liked the idea of _reading your source code_ as a main source of building block to keep moving forward with your application.
 
-This project has no pretension (yet! (: ) to provide the same
-flexibility as is described about the Smalltalk entire
-environment. However, I am often caught by surprise about the amount
-of code I depend on because I wanted to use that single nice function
-that helps me accomplish the task of the day.
+This project has no pretension to provide the same flexibility as is
+described about the Smalltalk entire environment. However, I am often
+caught by surprise about the amount of code I depend on because I
+wanted to use that single nice function that helps me accomplish the
+task of the day.
 
 ![](resources/smalltalk.png)
 
