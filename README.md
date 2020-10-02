@@ -7,10 +7,10 @@
 ![](resources/replr_v2.png)
 *Initial layout of REPLR.*
 
-- First pane will list all the symbols available on your load-class.
-- If you click in any function in the **first** pane, the **second** will show its dependencies
-- If you click in any function in the **first** pane, the **third** will show the functions that is using you (references)
-- If you click in any function in the **second** pane, the **third** will show the functions that is using you (references)
+- First pane will list all the namespaces available on your load-class.
+- Second pane will list all the symbols available on your load-class.
+- Third pane will show you the dependencies found for the selected symbols in **second** pane.
+- Fourth pane will show you the references found for the selected symbols in the **third** pane.
 
 ## Instalation
 
