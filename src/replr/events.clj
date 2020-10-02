@@ -1,30 +1,24 @@
 (ns replr.events
-  (:require [replr.filter :as -filter]
-            [replr.find :as -find]
+  (:require [replr.find :as -find]
             [replr.state :as -state]))
 
 (defmulti handler (fn [event] (:event/type event)))
 
-(defmethod handler :filter/remove-all-ns
+(defmethod handler :filter/show-all-namespaces
   [_]
-  (swap! -state/db assoc :filter-fns (sort (keys (:all-fns @-state/db))))
-  (swap! -state/db assoc :all-ns (-find/find-all-namespaces)))
+  (swap! -state/db assoc :all-loaded-vars (-find/find-all-vars))
+  (swap! -state/db assoc :all-loaded-ns (-find/find-all-namespaces))
+  (swap! -state/db assoc :selected-fn-dependencies (list))
+  (swap! -state/db assoc :selected-fn-references (list)))
 
-(defmethod handler :filter/project-ns
+(defmethod handler :filter/show-project-namespaces
   [_]
   (let [vars (-find/find-all-vars-current-project)
-        alls (:all-fns @-state/db)]
-    (swap! -state/db assoc :filter-fns (keys vars))
-    (swap! -state/db assoc :all-fns (merge vars alls))
-    (swap! -state/db assoc :all-ns (-find/find-project-namespaces))))
-
-(defmethod handler :filter/current-ns
-  [_]
-  (when-let [fn-name (:fn-clicked @-state/db)]
-    (->> (:all-fns @-state/db)
-         (-filter/filter-namespace fn-name )
-         (swap! -state/db assoc :filter-fns))))
-
+        ns-project (-find/find-project-namespaces)]
+    (swap! -state/db assoc :all-loaded-vars vars)
+    (swap! -state/db assoc :all-loaded-ns ns-project)
+    (swap! -state/db assoc :selected-fn-dependencies (list))
+    (swap! -state/db assoc :selected-fn-references (list))))
 
 (defmethod handler :multiple-selection/all-loaded-ns
   [event]

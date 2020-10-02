@@ -28,7 +28,7 @@
 (defn button-view [{:keys [text action]}]
   {:fx/type :button
    :text text
-   :on-action {:event/type (keyword (str "filter/" action))}})
+   :on-action {:event/type (keyword (str "filter/" (name action)))}})
 
 (def ext-with-html
   "Custom prop to be able to load content in the Webview component."
