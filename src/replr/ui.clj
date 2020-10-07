@@ -2,7 +2,8 @@
   (:require [cljfx.api :as fx]
             [replr.events :as -events]
             [replr.state :as -state]
-            [replr.utils.views :as -views]))
+            [replr.utils.views :as -views]
+            [replr.graph :as -graph]))
 
 (defn root [{:keys [all-loaded-vars
                     all-loaded-ns
@@ -61,11 +62,16 @@
                                           :text "Project ns"
                                           :action :show-project-namespaces}
                                          ]}
-                             {:fx/type :v-box
+                             {:fx/type :h-box
                               :padding 5
                               :spacing 20
                               :children [{:fx/type -views/display-html
-                                          :code source-code}]}]}}})
+                                          :code source-code}
+                                         {:fx/type :web-view
+                                          :font-scale 1
+                                          :context-menu-enabled false
+                                          :max-width 940
+                                          :url (-graph/get-graph)}]}]}}})
 
 (def renderer
   (fx/create-renderer
@@ -80,3 +86,4 @@
 
 (defn -main [& args]
   (open))
+

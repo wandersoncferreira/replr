@@ -30,6 +30,8 @@
   (let [selected-fn-names (:fx/event event)
         selected-fn-vars (map #(get-in @-state/db [:all-loaded-vars %]) selected-fn-names)]
 
+    (swap! -state/db assoc :selections selected-fn-names)
+
     (when (= (count selected-fn-names) 1)
       (swap! -state/db assoc :source-code (-find/find-source-code (first selected-fn-vars))))
 

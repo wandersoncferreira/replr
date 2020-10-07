@@ -4,7 +4,7 @@
 
 *Read* Eval Print Loop **and Read**!! UI to help you read your codebase!
 
-![](resources/replr_v2.png)
+![](resources/replr_wg.png)
 *Initial layout of REPLR.*
 
 - First pane will list all the namespaces available on your load-class.
