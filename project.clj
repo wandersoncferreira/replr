@@ -5,6 +5,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [cljfx "1.7.10"]
+                 [org.clojure/tools.namespace "1.0.0"]
+                 [rhizome "0.2.9"]
                  [nrepl "0.8.2"]
                  [cider/orchard "0.6.0"]]
   :repl-options {:init-ns replr.ui

@@ -10,6 +10,7 @@
                :all-loaded-ns all-ns
                :selected-fn-dependencies (list)
                :selected-fn-references (list)
+               :selections (list)
                :selection ""
                }))
 
